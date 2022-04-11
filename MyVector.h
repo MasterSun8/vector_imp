@@ -3,12 +3,8 @@ class MyVector{
         unsigned int size;
         int* tablica;
     public:
-        MyVector(unsigned int size=0){
-            this.size = size;
-            *tablica = new int[this.size]
-        }
-        int vectorSize(){
-            return this.size;
-        }
-        
-}
+        MyVector(unsigned int _size);
+        int vectorSize();
+        void printVector();
+        void pushBack(int);
+};
