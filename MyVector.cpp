@@ -9,6 +9,11 @@ myVector::myVector(unsigned int _size=0){
     }
 }
 
+myVector::myVector(){
+    size = 0;
+    tablica = new int[size];
+}
+
 int myVector::vectorSize(){
     return size;
 }

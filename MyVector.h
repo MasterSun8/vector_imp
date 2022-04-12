@@ -4,6 +4,7 @@ class myVector{
         int* tablica;
     public:
         myVector(unsigned int);
+        myVector();
         int vectorSize();
         void printVector();
         void pushBack(int);
