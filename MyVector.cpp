@@ -5,7 +5,7 @@ myVector::myVector(unsigned int _size=0){
     size = _size;
     tablica = new int[size];
     for (int i = 0; i < size; i++){
-        tablica[i] = i;
+        tablica[i] = 0;
     }
 }
 
