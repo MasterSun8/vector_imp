@@ -1,36 +1,78 @@
-#include "MyVector.h"
+#include "myVector.h"
 #include <iostream>
 
-MyVector::MyVector(unsigned int _size=0){
+myVector::myVector(unsigned int _size=0){
     size = _size;
     tablica = new int[size];
-    for (int i = 0; i < size; i ++){
-        tablica[i] = 0;
+    for (int i = 0; i < size; i++){
+        tablica[i] = i;
     }
 }
 
-int MyVector::vectorSize(){
+int myVector::vectorSize(){
     return size;
 }
 
-void MyVector::printVector(){
+void myVector::printVector(){
+    std::cout << "\n[\n";
     for (int i = 0; i < size; i ++){
-        std::cout << tablica[i] << "\n";
+        std::cout << "\t" << tablica[i] << "\n";
     }
+    std::cout << "]";
 }
 
-void MyVector::pushBack(int x = 0){
+void myVector::pushBack(int x = 0){
     size++;
-    std::cout << size << "\n";
     int *resized = new int[size];
     for (int i = 0; i < size-1; i++){
         resized[i] = tablica[i];
     }
-    resized[size] = x;
-    for (int i = 0; i < size; i ++){
-        std::cout << resized[i] << "\n";
+    resized[size-1] = x;
+    delete [] tablica;
+    tablica = resized;
+}
+
+void myVector::popBack(){
+    size = size == 0 ? size : size-1;
+    int *resized = new int[size];
+    for (int i = 0; i < size; i++){
+        resized[i] = tablica[i];
     }
     delete [] tablica;
-    tablica = NULL;
+    tablica = resized;
+}
+
+int myVector::at(int x){
+    return tablica[x];
+}
+
+void myVector::remove(int x){
+    if(size <= x){
+        return;
+    }
+    size = size == 0 ? size : size-1;
+    int *resized = new int[size];
+    for (int i = 0; i < x; i++){
+        resized[i] = tablica[i];
+    }
+    for (int i = x; i < size; i++){
+        resized[i] = tablica[i+1];
+    }
+    delete [] tablica;
+    tablica = resized;
+}
+
+void myVector::insert(int x, int y = 0){
+    x = size <= x ? size : x;
+    size++;
+    int *resized = new int[size];
+    for (int i = 0; i < x; i++){
+        resized[i] = tablica[i];
+    }
+    resized[x] = y;
+    for (int i = x+1; i < size; i++){
+        resized[i] = tablica[i-1];
+    }
+    delete [] tablica;
     tablica = resized;
 }

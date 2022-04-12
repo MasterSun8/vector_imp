@@ -1,12 +1,8 @@
 #include <iostream>
-#include "MyVector.h"
+#include "myVector.h"
 
 int main(){
-    MyVector x(3);
-    //x.printVector();
-    //std::cout << "\n";
-    x.pushBack(3);
-    std::cout << "\n";
-    x.pushBack(5);
-    //x.printVector();
+    myVector x(10);
+    x.insert(9, 110);
+    x.printVector();
 }
